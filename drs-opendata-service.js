@@ -238,7 +238,7 @@
             // Basic facets
         };
 
-		var endpointUrl = 'http://ldf.fi/drs-govopendata/sparql';
+		var endpointUrl = '//ldf.fi/drs-govopendata/sparql';
 		// use the ontology in local Fuseki for development
 		//var endpointUrl = 'http://localhost:3030/ds/sparql';
 
