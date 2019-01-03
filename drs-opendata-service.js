@@ -160,8 +160,8 @@
             label: 'Fund'
           },
           {
-            id: 'Ministeries',
-            pattern: '?id a <http://ldf.fi/schema/drs/opendata/Ministeries> . ',
+            id: 'Ministries',
+            pattern: '?id a <http://ldf.fi/schema/drs/opendata/Ministries> . ',
             label: 'Ministry'
           }
         ],
