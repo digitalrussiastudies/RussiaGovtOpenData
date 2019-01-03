@@ -346,6 +346,14 @@
   '   FILTER(?id != ?parallel__id) ' +
   '   FILTER(langMatches(lang(?parallel__label), "en")) ' +
   '  }' +
+  '  OPTIONAL { ' +
+  '   ?id a ?type . ' +
+  '   FILTER(?type = drs-schema:Ministries || ?type = drs-schema:Federal_Agencies_and_Services || ?type = drs-schema:Funds ) ' +
+  '   ?parallel__id a ?type . ' +
+  '   FILTER(?id != ?parallel__id) ' +
+  '   ?parallel__id skos:prefLabel ?parallel__label . ' +
+  '   FILTER(langMatches(lang(?parallel__label), "en")) ' +
+  '  }' +
   ' }';
 
   var resultOptions = {
