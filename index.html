@@ -27,13 +27,13 @@
     <div class="row">
       <div class="col-md-2">
         <!-- Facets are defined here using the configurations defined in the controller -->
-	    <seco-checkbox-facet data-options="vm.facets.opendatapage"></seco-checkbox-facet>
-		<seco-hierarchy-facet data-options="vm.facets.subject"></seco-hierarchy-facet>
-	    <seco-checkbox-facet data-options="vm.facets.fileformat"></seco-checkbox-facet>
-		<seco-hierarchy-facet data-options="vm.facets.organisation"></seco-hierarchy-facet>
-	    <seco-checkbox-facet data-options="vm.facets.type"></seco-checkbox-facet>
-	    <seco-checkbox-facet data-options="vm.facets.numberofdatasets"></seco-checkbox-facet>
-		
+        <seco-checkbox-facet data-options="vm.facets.opendatapage"></seco-checkbox-facet>
+        <seco-hierarchy-facet data-options="vm.facets.subject"></seco-hierarchy-facet>
+        <seco-checkbox-facet data-options="vm.facets.fileformat"></seco-checkbox-facet>
+        <seco-hierarchy-facet data-options="vm.facets.organisation"></seco-hierarchy-facet>
+        <seco-checkbox-facet data-options="vm.facets.type"></seco-checkbox-facet>
+        <seco-checkbox-facet data-options="vm.facets.numberofdatasets"></seco-checkbox-facet>
+
         <!-- <seco-text-facet data-options="vm.facets.name"></seco-text-facet> -->
       </div>
 
@@ -48,54 +48,55 @@
           </thead>
           <tbody>
             <tr ng-repeat="org in vm.page">
-			  <td>
-			    <!-- Organisation names -->
-			    <h3>{{ org.name_en }}, {{ org.name_ru }}, {{ org.altName }}</h3>
-			    <!-- Open data web page -->
-			    <div ng-if="org.openDataPage"><b>Webpage on open data:</b> <a href="{{ org.openDataPage }}">{{ org.openDataPage }}</a><br/>
-				  <span>&nbsp;&nbsp;Date of reference: {{ org.openDataPageReferenceDate }}</span><br/>
-			      <span ng-if="org.mboxForOpenData">&nbsp;&nbsp;Email for open data requests: <a href="{{ org.mboxForOpenData }}">{{ org.mboxForOpenData }}</a></span></div>
-			    <!-- Subject(s) -->
-			    <div ng-if="org.subject"><b>Subject(s):</b>
-				  <span ng-repeat="subject in vm.makeArray(org.subject) | orderBy:'label'">
+              <td>
+                <!-- Organisation names -->
+                <h3>{{ org.name_en }}, {{ org.name_ru }}, {{ org.altName }}</h3>
+                <!-- Open data web page -->
+                <div ng-if="org.openDataPage"><b>Webpage on open data:</b> <a href="{{ org.openDataPage }}">{{ org.openDataPage }}</a><br/>
+                  <span>&nbsp;&nbsp;Date of reference: {{ org.openDataPageReferenceDate }}</span><br/>
+                  <span ng-if="org.mboxForOpenData">&nbsp;&nbsp;Email for open data requests: <a href="{{ org.mboxForOpenData }}">{{ org.mboxForOpenData }}</a></span>
+                </div>
+                <!-- Subject(s) -->
+                <div ng-if="org.subject"><b>Subject(s):</b>
+                  <span ng-repeat="subject in vm.makeArray(org.subject) | orderBy:'label'">
                     {{ subject.label }}<span ng-if="!$last">, </span>
-					<!-- <a ng-href='/#!?facets=%7B"subject":%7B"value":"<{{ subject.id }}>","constraint":"%20%3Fseco_v_subject%20(<http:%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23broader>)*%20<{{ subject.id }}>%20.%20%20%3Fid%20<http:%2F%2Fpurl.org%2Fdc%2Fterms%2Fsubject>%20%3Fseco_v_subject%20.%20"%7D%7D'>{{ subject.label }}</a><span ng-if="!$last">, </span> -->
-					<!-- <a ui-shref='{}.({facets: {"subject":{"value":"{{ subject.id }}","constraint":" ?id <http://purl.org/dc/terms/subject>/<http://www.w3.org/2004/02/skos/core#broader>* {{ subject.id }} . "}}})'>{{ subject.label }}</a><span ng-if="!$last">, </span> -->
-			      </span>
-			    </div>
-			    <!-- Number of datasets -->
-			    <div><b>Number of available datasets:</b> {{ org.numberOfAvailableDatasets }}</div>
-			    <!-- File format(s) -->
-			    <div ng-if="org.fileFormat"><b>Dataset file format(s):</b> {{ org.fileFormat.join(", ") || org.fileFormat }}</div>
-			    <!-- Homepage -->
-			    <div><b>Homepage:</b> <a href="{{ org.homepage }}">{{ org.homepage }}</a><br/>
-				  <span>&nbsp;&nbsp;Date of reference: {{ org.homepageReferenceDate }}</span><br/>
-			      <span ng-if="org.mboxForGeneralQuestions">&nbsp;&nbsp;Email for general questions: <a href="{{ org.mboxForGeneralQuestions }}">{{ org.mboxForGeneralQuestions }}</a></span>
-			    </div>
-			    <!-- Webpage for requests -->
-			    <div ng-if="org.pageForRequests"><b>Webpage for requests:</b> <a href="{{ org.pageForRequests }}">{{ org.pageForRequests }}</a><br/>
-				  <span>&nbsp;&nbsp;Date of reference: {{ org.pageForRequestsReferenceDate }}</span>
-			    </div>
-			    <!-- Webpage on open data portal -->
-			    <div ng-if="org.pageOnOpenDataPortal"><b>Webpage on open data portal (Russia):</b> <a href="{{ org.pageOnOpenDataPortal }}">{{ org.pageOnOpenDataPortal }}</a><br/>
-				  <span>&nbsp;&nbsp;Date of reference: {{ org.pageOnOpenDataPortalReferenceDate }}</span>
-			    </div>
-			    <!-- Superior instance -->
-			    <div ng-if="org.superior_id"><b>Superior instance:</b> <!--<a ng-href="{{ org.superior_id }}">-->{{ org.superior_label }}<!--</a>--></div>
-			    <!-- Subsidiary instances -->
-			    <div ng-if="org.subsidiary"><b>Subsidiary instances:</b>
-				  <span ng-repeat="subsidiary in vm.makeArray(org.subsidiary)">
+                    <!-- <a ng-href='/#!?facets=%7B"subject":%7B"value":"<{{ subject.id }}>","constraint":"%20%3Fseco_v_subject%20(<http:%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23broader>)*%20<{{ subject.id }}>%20.%20%20%3Fid%20<http:%2F%2Fpurl.org%2Fdc%2Fterms%2Fsubject>%20%3Fseco_v_subject%20.%20"%7D%7D'>{{ subject.label }}</a><span ng-if="!$last">, </span> -->
+                    <!-- <a ui-shref='{}.({facets: {"subject":{"value":"{{ subject.id }}","constraint":" ?id <http://purl.org/dc/terms/subject>/<http://www.w3.org/2004/02/skos/core#broader>* {{ subject.id }} . "}}})'>{{ subject.label }}</a><span ng-if="!$last">, </span> -->
+                  </span>
+                </div>
+                <!-- Number of datasets -->
+                <div><b>Number of available datasets:</b> {{ org.numberOfAvailableDatasets }}</div>
+                <!-- File format(s) -->
+                <div ng-if="org.fileFormat"><b>Dataset file format(s):</b> {{ org.fileFormat.join(", ") || org.fileFormat }}</div>
+                <!-- Homepage -->
+                <div><b>Homepage:</b> <a href="{{ org.homepage }}">{{ org.homepage }}</a><br/>
+                  <span>&nbsp;&nbsp;Date of reference: {{ org.homepageReferenceDate }}</span><br/>
+                  <span ng-if="org.mboxForGeneralQuestions">&nbsp;&nbsp;Email for general questions: <a href="{{ org.mboxForGeneralQuestions }}">{{ org.mboxForGeneralQuestions }}</a></span>
+                </div>
+                <!-- Webpage for requests -->
+                <div ng-if="org.pageForRequests"><b>Webpage for requests:</b> <a href="{{ org.pageForRequests }}">{{ org.pageForRequests }}</a><br/>
+                  <span>&nbsp;&nbsp;Date of reference: {{ org.pageForRequestsReferenceDate }}</span>
+                </div>
+                <!-- Webpage on open data portal -->
+                <div ng-if="org.pageOnOpenDataPortal"><b>Webpage on open data portal (Russia):</b> <a href="{{ org.pageOnOpenDataPortal }}">{{ org.pageOnOpenDataPortal }}</a><br/>
+                  <span>&nbsp;&nbsp;Date of reference: {{ org.pageOnOpenDataPortalReferenceDate }}</span>
+                </div>
+                <!-- Superior instance -->
+                <div ng-if="org.superior_id"><b>Superior instance:</b> <!--<a ng-href="{{ org.superior_id }}">-->{{ org.superior_label }}<!--</a>--></div>
+                <!-- Subsidiary instances -->
+                <div ng-if="org.subsidiary"><b>Subsidiary instances:</b>
+                  <span ng-repeat="subsidiary in vm.makeArray(org.subsidiary)">
                     <!--<a ng-href="{{ subsidiary.id }}">-->{{ subsidiary.label }}<!--</a>--><span ng-if="!$last">, </span>
-				  </span>
-			    </div>
-			    <!-- Parallel instances -->
-			    <div ng-if="org.parallel"><b>Parallel instances:</b>
-				  <span ng-repeat="parallel in vm.makeArray(org.parallel)">
+                  </span>
+                </div>
+                <!-- Parallel instances -->
+                <div ng-if="org.parallel"><b>Parallel instances:</b>
+                  <span ng-repeat="parallel in vm.makeArray(org.parallel)">
                     <!--<a ng-href="{{ parallel.id }}">--> {{ parallel.label }}<!--</a>--><span ng-if="!$last">, </span>
-			  	  </span>
-			    </div>
-			  </td>
-			  
+                  </span>
+                </div>
+              </td>
+
               <!-- <td style="width:21%"> -->
             </tr>
           </tbody>
