@@ -59,7 +59,7 @@
                 <!-- Subject(s) -->
                 <div ng-if="org.subject"><b>Subject(s):</b>
                   <span ng-repeat="subject in vm.makeArray(org.subject) | orderBy:'label'">
-                    {{ subject.label }}<span ng-if="!$last">, </span>
+                    {{ subject.label }}<span ng-if="!$last">; </span>
                     <!-- <a ng-href='/#!?facets=%7B"subject":%7B"value":"<{{ subject.id }}>","constraint":"%20%3Fseco_v_subject%20(<http:%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23broader>)*%20<{{ subject.id }}>%20.%20%20%3Fid%20<http:%2F%2Fpurl.org%2Fdc%2Fterms%2Fsubject>%20%3Fseco_v_subject%20.%20"%7D%7D'>{{ subject.label }}</a><span ng-if="!$last">, </span> -->
                     <!-- <a ui-shref='{}.({facets: {"subject":{"value":"{{ subject.id }}","constraint":" ?id <http://purl.org/dc/terms/subject>/<http://www.w3.org/2004/02/skos/core#broader>* {{ subject.id }} . "}}})'>{{ subject.label }}</a><span ng-if="!$last">, </span> -->
                   </span>
@@ -86,13 +86,13 @@
                 <!-- Subsidiary instances -->
                 <div ng-if="org.subsidiary"><b>Subsidiary instances:</b>
                   <span ng-repeat="subsidiary in vm.makeArray(org.subsidiary)">
-                    <!--<a ng-href="{{ subsidiary.id }}">-->{{ subsidiary.label }}<!--</a>--><span ng-if="!$last">, </span>
+                    <!--<a ng-href="{{ subsidiary.id }}">-->{{ subsidiary.label }}<!--</a>--><span ng-if="!$last">; </span>
                   </span>
                 </div>
                 <!-- Parallel instances -->
                 <div ng-if="org.parallel"><b>Parallel instances:</b>
                   <span ng-repeat="parallel in vm.makeArray(org.parallel)">
-                    <!--<a ng-href="{{ parallel.id }}">--> {{ parallel.label }}<!--</a>--><span ng-if="!$last">, </span>
+                    <!--<a ng-href="{{ parallel.id }}">--> {{ parallel.label }}<!--</a>--><span ng-if="!$last">; </span>
                   </span>
                 </div>
               </td>
