@@ -5,6 +5,9 @@ Faceted search on Russian Governmental Open Data Ontology (published in [SPARQL 
 Try it here:
 https://digitalrussiastudies.github.io/RussianGovtOpenData
 
+See the ontology documentation on the LDF.fi service:
+http://www.ldf.fi/dataset/drs
+
 ## Installation
 
 `bower install`
