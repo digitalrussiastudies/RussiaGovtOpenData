@@ -140,6 +140,24 @@
         enabled: true,
         name: 'Organisation'
       },
+      // Hierarchical facet
+      organisation_ru: {
+        facetId: 'organisation_ru',
+        predicate: '<http://www.w3.org/2004/02/skos/core#prefLabel>/^<http://www.w3.org/2004/02/skos/core#prefLabel>', // hack for making a facet of the searched items
+        hierarchy: '<http://purl.org/dc/terms/isPartOf>',
+        enabled: true,
+        preferredLang: 'ru',
+        name: 'Organisation (in Russian)'
+      },
+      // Hierarchical facet
+      organisation_alt_ru: {
+        facetId: 'organisation_alt_ru',
+        predicate: '<http://www.w3.org/2004/02/skos/core#altLabel>/^<http://www.w3.org/2004/02/skos/core#altLabel>', // hack for making a facet of the searched items
+        hierarchy: '<http://purl.org/dc/terms/isPartOf>',
+        enabled: true,
+        preferredLang: 'ru',
+        name: 'Organisation (alternative label; in Russian)'
+      },
       // Checkbox facet
       type: {
         facetId: 'type',
