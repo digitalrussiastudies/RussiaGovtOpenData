@@ -63,6 +63,62 @@
         chart: true,
         name: 'Subject'
       },
+      // Hierarchical facet
+      organisation: {
+        facetId: 'organisation',
+        predicate: '<http://www.w3.org/2004/02/skos/core#prefLabel>/^<http://www.w3.org/2004/02/skos/core#prefLabel>', // hack for making a facet of the searched items
+        hierarchy: '<http://purl.org/dc/terms/isPartOf>',
+        enabled: true,
+        name: 'Organisation'
+      },
+      // Hierarchical facet
+      organisation_ru: {
+        facetId: 'organisation_ru',
+        predicate: '<http://www.w3.org/2004/02/skos/core#prefLabel>/^<http://www.w3.org/2004/02/skos/core#prefLabel>', // hack for making a facet of the searched items
+        hierarchy: '<http://purl.org/dc/terms/isPartOf>',
+        enabled: true,
+        preferredLang: 'ru',
+        name: 'Organisation (in Russian)'
+      },
+      // Basic (or Hierarchical?) facet
+      organisation_alt_ru: {
+        facetId: 'organisation_alt_ru',
+        //predicate: '<http://www.w3.org/2004/02/skos/core#altLabel>/^<http://www.w3.org/2004/02/skos/core#altLabel>', // hack for making a facet of the searched items
+        predicate: '<http://www.w3.org/2008/05/skos-xl#altLabel>',
+        //hierarchy: '<http://purl.org/dc/terms/isPartOf>',
+        enabled: true,
+        preferredLang: 'ru',
+        name: 'Organisation (abbreviation)'
+      },
+      // Checkbox facet
+      type: {
+        facetId: 'type',
+        choices: [
+          {
+            id: 'Agencies_and_Services',
+            pattern: '?id a <http://ldf.fi/schema/drs/opendata/Agencies_and_Services> . ',
+            label: 'Agency or service'
+          },
+          {
+            id: 'Federal_Agencies_and_Services',
+            pattern: '?id a <http://ldf.fi/schema/drs/opendata/Federal_Agencies_and_Services> . ',
+            label: 'Federal agency or service'
+          },
+          {
+            id: 'Funds',
+            pattern: '?id a <http://ldf.fi/schema/drs/opendata/Funds> . ',
+            label: 'Fund'
+          },
+          {
+            id: 'Ministries',
+            pattern: '?id a <http://ldf.fi/schema/drs/opendata/Ministries> . ',
+            label: 'Ministry'
+          }
+        ],
+        chart: true,
+        enabled: true,
+        name: 'Organisation type'
+      },
       // Checkbox facet
       fileformat: {
         facetId: 'fileformat',
@@ -131,61 +187,6 @@
         chart: true,
         enabled: true,
         name: 'File format'
-      },
-      // Hierarchical facet
-      organisation: {
-        facetId: 'organisation',
-        predicate: '<http://www.w3.org/2004/02/skos/core#prefLabel>/^<http://www.w3.org/2004/02/skos/core#prefLabel>', // hack for making a facet of the searched items
-        hierarchy: '<http://purl.org/dc/terms/isPartOf>',
-        enabled: true,
-        name: 'Organisation'
-      },
-      // Hierarchical facet
-      organisation_ru: {
-        facetId: 'organisation_ru',
-        predicate: '<http://www.w3.org/2004/02/skos/core#prefLabel>/^<http://www.w3.org/2004/02/skos/core#prefLabel>', // hack for making a facet of the searched items
-        hierarchy: '<http://purl.org/dc/terms/isPartOf>',
-        enabled: true,
-        preferredLang: 'ru',
-        name: 'Organisation (in Russian)'
-      },
-      // Hierarchical facet
-      organisation_alt_ru: {
-        facetId: 'organisation_alt_ru',
-        predicate: '<http://www.w3.org/2004/02/skos/core#altLabel>/^<http://www.w3.org/2004/02/skos/core#altLabel>', // hack for making a facet of the searched items
-        hierarchy: '<http://purl.org/dc/terms/isPartOf>',
-        enabled: true,
-        preferredLang: 'ru',
-        name: 'Organisation (alternative label; in Russian)'
-      },
-      // Checkbox facet
-      type: {
-        facetId: 'type',
-        choices: [
-          {
-            id: 'Agencies_and_Services',
-            pattern: '?id a <http://ldf.fi/schema/drs/opendata/Agencies_and_Services> . ',
-            label: 'Agency or service'
-          },
-          {
-            id: 'Federal_Agencies_and_Services',
-            pattern: '?id a <http://ldf.fi/schema/drs/opendata/Federal_Agencies_and_Services> . ',
-            label: 'Federal agency or service'
-          },
-          {
-            id: 'Funds',
-            pattern: '?id a <http://ldf.fi/schema/drs/opendata/Funds> . ',
-            label: 'Fund'
-          },
-          {
-            id: 'Ministries',
-            pattern: '?id a <http://ldf.fi/schema/drs/opendata/Ministries> . ',
-            label: 'Ministry'
-          }
-        ],
-        chart: true,
-        enabled: true,
-        name: 'Organisation type'
       },
       // Checkbox facet
       numberofdatasets: {
@@ -256,9 +257,9 @@
     // Basic facets
   };
 
-  var endpointUrl = '//ldf.fi/drs/sparql';
+  //var endpointUrl = '//ldf.fi/drs/sparql';
   // use the ontology in local Fuseki for development
-  //var endpointUrl = 'http://localhost:3030/ds/sparql';
+  var endpointUrl = 'http://localhost:3030/ds/sparql';
 
   // We are building a faceted search for organisations.
   //var rdfClass = '<http://ldf.fi/schema/drs/opendata/Federal_institutions>';
@@ -279,7 +280,7 @@
     endpointUrl: endpointUrl, // required
     //rdfClass: rdfClass, // optional, not used as the organizations do not share an upper class explicitly
     usePost: true, // use POST so that facets with long queries don't break other facets
-    constraint: '?id a/rdfs:subClassOf* <http://ldf.fi/schema/drs/opendata/Federal_institutions>', // optional
+    constraint: '?id a/rdfs:subClassOf* <http://ldf.fi/schema/drs/opendata/Federal_institutions> .', // optional
     preferredLang : 'en' // required
   };
 
