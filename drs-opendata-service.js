@@ -194,52 +194,52 @@
         choices: [
           {
             id: 'lessthan11',
-            pattern: '?id <http://ldf.fi/schema/drs/opendata/openDataPage>/<http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number < 11) ',
+            pattern: '?id <http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number < 11) ',
             label: '< 11'
           },
           {
             id: '11to20',
-            pattern: '?id <http://ldf.fi/schema/drs/opendata/openDataPage>/<http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 11 && ?number < 20) ',
+            pattern: '?id <http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 11 && ?number < 20) ',
             label: '11–20'
           },
           {
             id: '21to30',
-            pattern: '?id <http://ldf.fi/schema/drs/opendata/openDataPage>/<http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 21 && ?number < 30) ',
+            pattern: '?id <http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 21 && ?number < 30) ',
             label: '21–30'
           },
           {
             id: '31to40',
-            pattern: '?id <http://ldf.fi/schema/drs/opendata/openDataPage>/<http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 31 && ?number < 40) ',
+            pattern: '?id <http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 31 && ?number < 40) ',
             label: '31–40'
           },
           {
             id: '41to50',
-            pattern: '?id <http://ldf.fi/schema/drs/opendata/openDataPage>/<http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 41 && ?number < 50) ',
+            pattern: '?id <http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 41 && ?number < 50) ',
             label: '41–50'
           },
           {
             id: '51to60',
-            pattern: '?id <http://ldf.fi/schema/drs/opendata/openDataPage>/<http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 51 && ?number < 60) ',
+            pattern: '?id <http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 51 && ?number < 60) ',
             label: '51–60'
           },
           {
             id: '61to70',
-            pattern: '?id <http://ldf.fi/schema/drs/opendata/openDataPage>/<http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 61 && ?number < 70) ',
+            pattern: '?id <http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 61 && ?number < 70) ',
             label: '61–70'
           },
           {
             id: '71to80',
-            pattern: '?id <http://ldf.fi/schema/drs/opendata/openDataPage>/<http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 71 && ?number < 80) ',
+            pattern: '?id <http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 71 && ?number < 80) ',
             label: '71–80'
           },
           {
             id: '81to90',
-            pattern: '?id <http://ldf.fi/schema/drs/opendata/openDataPage>/<http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 81 && ?number < 90) ',
+            pattern: '?id <http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number >= 81 && ?number < 90) ',
             label: '81–90'
           },
           {
             id: 'morethan90',
-            pattern: '?id <http://ldf.fi/schema/drs/opendata/openDataPage>/<http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number > 90) ',
+            pattern: '?id <http://ldf.fi/schema/drs/opendata/availableNumberOfDatasets> ?number . FILTER(?number > 90) ',
             label: '90 <'
           },
         ],
@@ -319,7 +319,9 @@
   '   ?id drs-schema:openDataPage ?openDataPage . ' +
   '   ?openDataPage drs-schema:dateOfReference ?openDataPageReferenceDateTime . ' +
   '   BIND (strbefore(str(?openDataPageReferenceDateTime), "T") AS ?openDataPageReferenceDate) ' +
-  '   ?openDataPage drs-schema:availableNumberOfDatasets ?numberOfAvailableDatasets . ' +
+  '  }' +
+  '  OPTIONAL { ' +
+  '   ?id drs-schema:availableNumberOfDatasets ?numberOfAvailableDatasets . ' +
   '  }' +
   '  OPTIONAL { ' +
   '   ?id drs-schema:mboxForOpenData ?mboxForOpenData . ' +

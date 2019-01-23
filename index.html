@@ -54,8 +54,12 @@
               <td>
                 <!-- Organisation names -->
                 <h3>{{ org.name_en }}, {{ org.name_ru }}, {{ org.altName }}</h3>
-                <!-- Open data web page -->
-                <div ng-if="org.openDataPage"><b>Webpage on open data:</b> <a href="{{ org.openDataPage }}">{{ org.openDataPage }}</a><br/>
+                <!-- Open data web pages -->
+                <div ng-if="org.openDataPage"><b>Webpage(s) on open data:</b>
+                  <span ng-repeat="openDataPage in vm.makeArray(org.openDataPage)">
+                     <a href="{{ openDataPage }}">{{ openDataPage }}</a><span ng-if="!$last">, </span>
+                  </span>
+                  <br/>
                   <span>&nbsp;&nbsp;Date of reference: {{ org.openDataPageReferenceDate }}</span><br/>
                   <span ng-if="org.mboxForOpenData">&nbsp;&nbsp;Email for open data requests: <a href="{{ org.mboxForOpenData }}">{{ org.mboxForOpenData }}</a></span>
                 </div>
@@ -68,7 +72,9 @@
                   </span>
                 </div>
                 <!-- Number of datasets -->
-                <div><b>Number of available datasets:</b> {{ org.numberOfAvailableDatasets }}</div>
+                <div ng-if="org.numberOfAvailableDatasets"><b>Number of available datasets:</b>
+                  {{ org.numberOfAvailableDatasets }}
+                 </div>
                 <!-- File format(s) -->
                 <div ng-if="org.fileFormat"><b>Dataset file format(s):</b> {{ org.fileFormat.join(", ") || org.fileFormat }}</div>
                 <!-- Homepage -->
