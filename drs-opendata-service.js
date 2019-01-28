@@ -257,9 +257,9 @@
     // Basic facets
   };
 
-  //var endpointUrl = '//ldf.fi/drs/sparql';
+  var endpointUrl = '//ldf.fi/drs/sparql';
   // use the ontology in local Fuseki for development
-  var endpointUrl = 'http://localhost:3030/ds/sparql';
+  //var endpointUrl = 'http://localhost:3030/ds/sparql';
 
   // We are building a faceted search for organisations.
   //var rdfClass = '<http://ldf.fi/schema/drs/opendata/Federal_institutions>';
